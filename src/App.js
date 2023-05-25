@@ -3,12 +3,11 @@ import {Routes, Route} from "react-router-dom"
 import axios from "axios"
 import "./App.css";
 
-import countriesJson from "./countries.json"
+// import countriesJson from "./countries.json"
 //components
 import NavBar from "./components/NavBar";
 import CountriesList from "./components/CountriesList";
-import CountryDetails from "./components/CountryDetails";
-import MainPage from "./pages/MainPage";
+import CountryDetails from "./pages/CountryDetails";
 
 function App() {
   const [countries, setCountries] = useState([])
@@ -29,7 +28,7 @@ function App() {
     <div className="mainContainer">
       {/* <CountriesList countries={countries}/> */}
       <Routes>
-        <Route path="/" element={<MainPage countries={countries}/>} />
+        <Route path="/" element={<CountriesList countries={countries}/>} />
         {countries.map((country) => {
           return(
             <Route path={"/" + country.alpha3Code} key={country._id} element={ <CountryDetails countryData={country}/> }/>
