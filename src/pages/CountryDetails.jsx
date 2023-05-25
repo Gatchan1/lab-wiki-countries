@@ -1,10 +1,13 @@
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
+
 
 function CountryDetails({countryData}) {
-    console.log("countryData: ", countryData)
+  const {alpha3Code} = useParams()
+  // console.log("useparamsssss: ", alpha3Code)
+    // console.log("countryData: ", countryData)
     return(
         <div className="countryDetails">
-            <h1>{countryData.name.common}</h1>
+            <h1>{countryData.name.common} ({alpha3Code})</h1>
             <table className="table">
               <thead></thead>
               <tbody>

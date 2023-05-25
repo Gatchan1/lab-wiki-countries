@@ -15,7 +15,7 @@ function App() {
   useEffect(()=>{
     axios.get("https://ih-countries-api.herokuapp.com/countries")
     .then(results => {
-      console.log("resuuuuults: ", results)
+      // console.log("resuuuuults: ", results)
       setCountries(results.data)
     })
     .catch(err => console.log(err))
@@ -31,7 +31,8 @@ function App() {
         <Route path="/" element={<CountriesList countries={countries}/>} />
         {countries.map((country) => {
           return(
-            <Route path={"/" + country.alpha3Code} key={country._id} element={ <CountryDetails countryData={country}/> }/>
+            <Route path="/:alpha3Code" key={country._id} element={ <CountryDetails countryData={country}/> }/>
+            // ojo, que esta ruta es interesante (por lo de los useParams)
           )
         })}
       </Routes>
